@@ -27,10 +27,7 @@ var path = require('path');
 var fs = require('fs');
 var net = require('net');
 
-var socketPath = path.join(common.fixturesDir, 'socket-path');
-if (typeof process.env.NODE_PIPE_DIR !== 'undefined') {
-  socketPath = path.join(process.env.NODE_PIPE_DIR, 'socket-path');
-}
+var socketPath = common.PIPE;
 
 if (cluster.isMaster) {
   var worker = cluster.fork();

@@ -54,14 +54,14 @@ class SimpleTestCase(test.TestCase):
     try:
       rmtree(self.tmpdir)
       if "NODE_PIPE_DIR" in os.environ:
-        rmtree(os.environ["NODE_PIPE_DIR"]);
+        rmtree(join(os.environ["NODE_PIPE_DIR"], 'NodePipeTmp'));
     except:
       pass
     # make it again.
     try:
       mkdir(self.tmpdir)
       if "NODE_PIPE_DIR" in os.environ:
-        mkdir(os.environ["NODE_PIPE_DIR"]);
+        mkdir(join(os.environ["NODE_PIPE_DIR"], 'NodePipeTmp'));
     except:
       pass
 
@@ -70,7 +70,7 @@ class SimpleTestCase(test.TestCase):
     try:
       rmtree(self.tmpdir)
       if "NODE_PIPE_DIR" in os.environ:
-        rmtree(os.environ["NODE_PIPE_DIR"]);
+        rmtree(join(os.environ["NODE_PIPE_DIR"], 'NodePipeTmp'));
     except:
       pass
     # make it again.
@@ -79,7 +79,7 @@ class SimpleTestCase(test.TestCase):
       try:
         mkdir(self.tmpdir)
         if "NODE_PIPE_DIR" in os.environ:
-          mkdir(os.environ["NODE_PIPE_DIR"]);
+          mkdir(join(os.environ["NODE_PIPE_DIR"], 'NodePipeTmp'));
       except:
         pass
   
