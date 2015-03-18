@@ -48,20 +48,22 @@ class SimpleTestCase(test.TestCase):
     self.mode = mode
     self.tmpdir = join(dirname(self.config.root), 'tmp')
     self.additional_flags = additional
+    if "NODE_PIPE_DIR" in os.environ:
+      self.pipeTmpDir = join(os.environ["NODE_PIPE_DIR"], 'NodePipeTmp')
   
   def AfterRun(self, result):
     # delete the whole tmp dir
     try:
       rmtree(self.tmpdir)
       if "NODE_PIPE_DIR" in os.environ:
-        rmtree(join(os.environ["NODE_PIPE_DIR"], 'NodePipeTmp'));
+        rmtree(self.pipeTmpDir);
     except:
       pass
     # make it again.
     try:
       mkdir(self.tmpdir)
       if "NODE_PIPE_DIR" in os.environ:
-        mkdir(join(os.environ["NODE_PIPE_DIR"], 'NodePipeTmp'));
+        mkdir(self.pipeTmpDir);
     except:
       pass
 
@@ -70,7 +72,7 @@ class SimpleTestCase(test.TestCase):
     try:
       rmtree(self.tmpdir)
       if "NODE_PIPE_DIR" in os.environ:
-        rmtree(join(os.environ["NODE_PIPE_DIR"], 'NodePipeTmp'));
+        rmtree(self.pipeTmpDir);
     except:
       pass
     # make it again.
@@ -79,7 +81,7 @@ class SimpleTestCase(test.TestCase):
       try:
         mkdir(self.tmpdir)
         if "NODE_PIPE_DIR" in os.environ:
-          mkdir(join(os.environ["NODE_PIPE_DIR"], 'NodePipeTmp'));
+          mkdir(self.pipeTmpDir);
       except:
         pass
   
